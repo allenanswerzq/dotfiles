@@ -145,16 +145,18 @@ install_dependencies() {
     sudo apt install -y curl
     sudo apt install -y zsh
   fi
-  # Powerline fonts
-  git clone https://github.com/powerline/fonts.git --depth=1
-  cd fonts
-  sudo ./install.sh
-  cd ..
-  rm -rf fonts
+  if [ ! -d $HOME/.fonts ]; then
+    # Powerline fonts
+    git clone https://github.com/powerline/fonts.git --depth=1 $HOME/.fonts
+    cd .fonts
+    sudo ./install.sh
+    cd ..
+  fi
 }
 
 # install oh-my-zsh
 install_oh_my_zsh() {
+  info "installing oh-my-zsh..."
   if [ ! -d $HOME/.oh-my-zsh ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     cp $HOME/.dotfiles/zsh/agnoster.zsh-theme $HOME/.oh-my-zsh/theme/agnoster.zsh-theme
@@ -163,6 +165,7 @@ install_oh_my_zsh() {
 
 # install tmux-package-manager
 install_tpm() {
+  info "installing tpm..."
   if [ ! -d $HOME/.tmux/plugins/tpm ];then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   fi
@@ -170,7 +173,7 @@ install_tpm() {
 
 
 # create vim backup and swap files
-if [ ! -d $HOME/vim ]; then
+if [ ! -d $HOME/.vim ]; then
   echo 
   echo "================================="
   echo 'Creating vim backup directory...'
@@ -184,14 +187,19 @@ fi
 
 # install conda
 install_conda() {
+  info "installing conda..."
   if [ "$(uname -s)" == "Linux" ]; then
-    curl -fsSL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh > out
-    chmod +x out && bash out -b -p $HOME/miniconda
-    rm out
+    if [ ! -d $HOME/miniconda ]; then
+      curl -fsSL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh > out
+      chmod +x out && bash out -b -p $HOME/miniconda
+      rm out
+    fi
   elif [ "$(uname -s)" == "Darwin" ]; then
-   curl -fsSL https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh > out
-   chmod +x out && bash out -b -p $HOME/miniconda
-   rm out
+    if [ ! -d $HOME/miniconda ]; then
+      curl -fsSL https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh > out
+      chmod +x out && bash out -b -p $HOME/miniconda
+      rm out
+    fi
   fi
 }
 
@@ -211,6 +219,7 @@ dot () {
 
 install_dependencies
 dot
+install_tpm
 install_conda
 setup_gitconfig
 install_dotfiles
