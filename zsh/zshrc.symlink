@@ -56,3 +56,4 @@ bindkey "^[[B" down-line-or-beginning-secorrect_lossarch # Down
 #   [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
 # fi
 
+alias ztcli=zerotier-cli
