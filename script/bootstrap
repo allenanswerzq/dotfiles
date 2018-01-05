@@ -157,7 +157,7 @@ install_oh_my_zsh() {
   info "installing oh-my-zsh..."
   if [ ! -d $HOME/.oh-my-zsh ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    cp $HOME/.dotfiles/zsh/agnoster.zsh-theme $HOME/.oh-my-zsh/theme/agnoster.zsh-theme
+    cp $HOME/.dotfiles/zsh/agnoster.zsh-theme $HOME/.oh-my-zsh/themes/agnoster.zsh-theme
   fi
 }
 
