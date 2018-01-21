@@ -14,7 +14,8 @@ export ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="random"
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="kolo"
-ZSH_THEME="agnoster"
+ZSH_THEME=sorin
+#ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"

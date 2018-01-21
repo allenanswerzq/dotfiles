@@ -45,8 +45,8 @@ bind-key C-a last-pane
 set -g status on
 
 # soften status bar colors
-set -g status-bg '#586e75'
-set -g status-fg '#eee8d5'
+#set -g status-bg '#586e75'
+#set -g status-fg '#eee8d5'
 
 # More colors from Solarized
 # $base03:    #002b36;
