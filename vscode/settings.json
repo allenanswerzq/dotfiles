@@ -1,0 +1,32 @@
+{
+    "editor.fontFamily" :"OperatorMono Nerd Font",
+    "editor.fontSize": 15,
+    "terminal.integrated.fontFamily": "OperatorMono Nerd Font",
+    "terminal.integrated.fontSize": 14,
+    "editor.tabSize": 2,
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressUpdateNotice": false,
+        "suppressWelcomeNotice": true
+    },
+    "explorer.confirmDelete": false,
+    "workbench.panel.location": "right",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "window.zoomLevel": 0,
+
+    "cquery.launch.workingDirectory": "/Users/jche/Code/cquery/build",
+    "cquery.launch.command": "release/bin/cquery",
+    "cquery.cacheDirectory": "/tmp/vscode-cquery",
+
+    "python.linting.pylintPath": "/usr/local/bin/pylint",
+
+    "workbench.statusBar.visible": false,
+    "workbench.activityBar.visible": false,
+    "editor.minimap.enabled": false,
+    "workbench.colorTheme": "Quiet Light"
+}

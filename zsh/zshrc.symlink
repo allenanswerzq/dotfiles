@@ -18,14 +18,14 @@ config_files=($DOT/**/*.zsh)
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}
 do
-  #echo loading... $file
+  echo loading... $file
   source $file
 done
 
 # load everything but the path and completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
 do
-  #echo loading... $file
+  echo loading... $file
   source $file
 done
 
@@ -36,7 +36,7 @@ compinit
 # load every completion after autocomplete loads
 for file in ${(M)config_files:#*/completion.zsh}
 do
-  #echo loading... $file
+  echo loading... $file
   source $file
 done
 
@@ -51,9 +51,18 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-secorrect_lossarch # Down
 
-# auto enter tmux
-# if command -v tmux>/dev/null; then
-#   [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
-# fi
+#auto enter tmux
+#if command -v tmux>/dev/null; then
+#  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+#fi
 
-alias ztcli=zerotier-cli
+#tmux attach > out.txt 2>&1
+#mes=$(cat out.txt)
+
+#if [[ "$mes" == "no sessions" ]]; then
+#  tmux new -s s1 
+#else
+#  tmux attach
+#fi
+#rm out.txt
+
