@@ -1,8 +1,16 @@
 {
+    // "vim.easymotion": true,
+    "vim.foldfix":true,
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/local/bin/nvim",
+    "vim.history": 100,
+    "vim.mouseSelectionGoesIntoVisualMode": false,
+    "vim.useSystemClipboard": true,
+
     "editor.fontFamily" :"OperatorMono Nerd Font",
     "editor.fontSize": 15,
     "terminal.integrated.fontFamily": "OperatorMono Nerd Font",
-    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontSize": 13,
     "editor.tabSize": 2,
     "gitlens.advanced.messages": {
         "suppressCommitHasNoPreviousCommitWarning": false,
@@ -17,7 +25,7 @@
     "explorer.confirmDelete": false,
     "workbench.panel.location": "right",
     "workbench.editor.enablePreviewFromQuickOpen": false,
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 1,
 
     "cquery.launch.workingDirectory": "/Users/jche/Code/cquery/build",
     "cquery.launch.command": "release/bin/cquery",
@@ -28,5 +36,7 @@
     "workbench.statusBar.visible": false,
     "workbench.activityBar.visible": false,
     "editor.minimap.enabled": false,
-    "workbench.colorTheme": "Quiet Light"
+    "workbench.colorTheme": "Quiet Light",
+    "todo-tree.ripgrep": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/vscode-ripgrep/bin/rg",
+    "gitlens.keymap": "alternate"
 }
