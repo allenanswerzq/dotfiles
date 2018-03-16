@@ -100,5 +100,7 @@ alias gt=gnome-terminal
 alias cdt='cd /c/Users/Jche/Downloads/tmp'
 alias trash="rmtrash"
 alias del="rmtrash"
+alias tp='trash-put'
+alias tl='trash-list'
 alias rm="echo Use 'del' or 'trash' or the full path i.e. '/bin/rm'"
 

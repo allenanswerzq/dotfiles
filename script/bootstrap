@@ -144,6 +144,7 @@ install_dependencies() {
     sudo apt install -y git
     sudo apt install -y curl
     sudo apt install -y zsh
+    sudo apt install -y trash-cli
   fi
   if [ ! -d $HOME/.fonts ]; then
     # Powerline fonts
