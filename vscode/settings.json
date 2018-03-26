@@ -4,9 +4,9 @@
     ],
     // "vim.easymotion": true,
     "vim.foldfix":true,
-    "vim.enableNeovim": true,
-    "vim.neovimPath": "/usr/local/bin/nvim",
-    "vim.history": 100,
+    //"vim.enableNeovim": true,
+    //"vim.neovimPath": "/usr/local/bin/nvim",
+    "vim.history": 40,
     "vim.mouseSelectionGoesIntoVisualMode": false,
     "vim.useSystemClipboard": true,
 
@@ -41,5 +41,5 @@
     "editor.minimap.enabled": false,
     "todo-tree.ripgrep": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/vscode-ripgrep/bin/rg",
     "gitlens.keymap": "alternate",
-    "workbench.colorTheme": "Visual Studio Dark"
+    "workbench.colorTheme": "Quiet Light"
 }
