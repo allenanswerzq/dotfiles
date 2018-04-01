@@ -14,7 +14,7 @@ alias rmd='rm -rfdv'
 alias d="cd ~/Documents"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias p="cd ~/projects"
+alias p="cd ~/Code"
 alias g="git"
 
 # Detect which `ls` flavor is in use
@@ -189,9 +189,18 @@ alias awkp6='awk "{print \$6}"'
 alias awkp7='awk "{print \$7}"'
 alias awkp8='awk "{print \$8}"'
 alias awkp9='awk "{print \$9}"'
-alias dots="subl ~/.dotfiles"
+alias dots="code ~/.dotfiles"
 alias new="ls -alt" 
 # Set all_proxy env variable
 alias set_all="export all_proxy=socks5://127.0.0.1:2088"
 # Clear all_proxy env variable
 alias clear_all="export all_proxy="
+alias rg="rg -n"
+alias gt=gnome-terminal 
+alias cdt='cd /c/Users/Jche/Downloads/tmp'
+alias trash="rmtrash"
+alias del="rmtrash"
+alias tp='trash-put'
+alias tl='trash-list'
+alias rm="echo Use 'del' or 'trash' or the full path i.e. '/bin/rm'"
+alias rrm='read "?Are you sure you wanna delete this? Maybe can put this in trash instead: " && /bin/rm -i'

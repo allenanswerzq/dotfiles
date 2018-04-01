@@ -96,11 +96,3 @@ source $ZSH/oh-my-zsh.sh
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=/c/PyWorkHome
 export GOPATH=/c/Users/Jche/Project/goworks
-alias gt=gnome-terminal 
-alias cdt='cd /c/Users/Jche/Downloads/tmp'
-alias trash="rmtrash"
-alias del="rmtrash"
-alias tp='trash-put'
-alias tl='trash-list'
-alias rm="echo Use 'del' or 'trash' or the full path i.e. '/bin/rm'"
-
