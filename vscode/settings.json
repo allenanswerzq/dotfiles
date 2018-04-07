@@ -23,6 +23,8 @@
         "suppressGitVersionWarning": false,
         "suppressLineUncommittedWarning": false,
         "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true,
         "suppressUpdateNotice": false,
         "suppressWelcomeNotice": true
     },
@@ -42,5 +44,6 @@
     "editor.minimap.enabled": false,
     "todo-tree.ripgrep": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/vscode-ripgrep/bin/rg",
     "gitlens.keymap": "alternate",
-    "workbench.colorTheme": "Quiet Light"
+    "workbench.colorTheme": "Quiet Light",
+    "explorer.confirmDragAndDrop": false
 }
