@@ -16,6 +16,7 @@ set-option -g update-environment "SSH_AUTH_SOCK \
                                   SSH_CONNECTION \
                                   DISPLAY"
 set -g status-right '#[fg=black] #U@#H #[default]#[fg=black]#(tmux display-message -p "#{pane_current_path}" | sed "s#$HOME#~#g") #[fg=black]%H:%M %d-%b-%y#[default]'
+
 # act like vim
 setw -g mode-keys vi
 bind h select-pane -L
