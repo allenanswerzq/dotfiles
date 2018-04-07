@@ -168,7 +168,7 @@ bind p paste-buffer
 bind C-p choose-buffer
 
 # trigger copy mode by
-bind -n C-a copy-mode
+bind -n C-x copy-mode
 
 # Scroll up/down by 1 line, half screen, whole screen
 #bind -T copy-mode-vi k              send-keys -X scroll-up
