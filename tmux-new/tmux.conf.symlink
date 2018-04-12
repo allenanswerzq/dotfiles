@@ -52,11 +52,11 @@ unbind o    # focus thru panes
 unbind &    # kill-window
 unbind "#"  # list-buffer 
 unbind =    # choose-buffer
-unbind z    # zoom-pane
-unbind M-Up  # resize 5 rows up
-unbind M-Down # resize 5 rows down
-unbind M-Right # resize 5 rows right
-unbind M-Left # resize 5 rows left
+#unbind z    # zoom-pane
+#unbind M-Up  # resize 5 rows up
+#unbind M-Down # resize 5 rows down
+#unbind M-Right # resize 5 rows right
+#unbind M-Left # resize 5 rows left
 
 
 # Edit configuration and reload
@@ -74,6 +74,12 @@ set-hook -g after-new-window 'command-prompt -I "#{window_name}" "rename-window 
 # Rename session and window
 bind W command-prompt -I "#{window_name}" "rename-window '%%'"
 bind R command-prompt -I "#{session_name}" "rename-session '%%'"
+
+# Shift + arrows to resize pane
+bind -n S-Left resize-pane -L 2
+bind -n S-Right resize-pane -R 2
+bind -n S-Down resize-pane -D 1
+bind -n S-Up resize-pane -U 1
 
 # Split panes
 bind | split-window -h -c "#{pane_current_path}"
@@ -103,7 +109,7 @@ bind -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
 
 
 # Zoom pane
-bind + resize-pane -Z
+bind z resize-pane -Z
 
 # Link window
 bind L command-prompt -p "Link window from (session:window): " "link-window -s %% -a"
@@ -230,7 +236,7 @@ color_white="white" # 015
 # This is a theme CONTRACT, you are required to define variables below
 # Change values, but not remove/rename variables itself
 color_dark="$color_black"
-color_light="$color_white"
+color_light="$color_dark"
 color_session_text="$color_blue"
 color_status_text="colour245"
 color_main="$color_orange"

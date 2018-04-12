@@ -1,18 +1,20 @@
 {
+    "files.autoSave": "onFocusChange",
+    "files.eol": "\n",
     "editor.renderWhitespace": "all",
     "gitProjectManager.baseProjectsFolders": [
         "~/Code"
     ],
     // "vim.easymotion": true,
     "vim.foldfix":true,
-    //"vim.enableNeovim": true,
-    //"vim.neovimPath": "/usr/local/bin/nvim",
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/local/bin/nvim",
     "vim.history": 40,
     "vim.mouseSelectionGoesIntoVisualMode": false,
     "vim.useSystemClipboard": true,
 
-    "editor.fontFamily" :"OperatorMono Nerd Font",
-    "editor.fontSize": 15,
+    //"editor.fontFamily" :"OperatorMono Nerd Font",
+    "editor.fontSize": 14,
     "terminal.integrated.fontFamily": "OperatorMono Nerd Font",
     "terminal.integrated.fontSize": 13,
     "editor.tabSize": 2,
@@ -31,7 +33,7 @@
     "explorer.confirmDelete": false,
     "workbench.panel.location": "right",
     "workbench.editor.enablePreviewFromQuickOpen": false,
-    "window.zoomLevel": 0,
+    "window.zoomLevel": -1,
 
     "cquery.launch.workingDirectory": "/Users/jche/Code/cquery/build",
     "cquery.launch.command": "release/bin/cquery",
@@ -39,7 +41,7 @@
 
     "python.linting.pylintPath": "/usr/local/bin/pylint",
 
-    "workbench.statusBar.visible": false,
+    "workbench.statusBar.visible": true,
     "workbench.activityBar.visible": false,
     "editor.minimap.enabled": false,
     "todo-tree.ripgrep": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/vscode-ripgrep/bin/rg",
