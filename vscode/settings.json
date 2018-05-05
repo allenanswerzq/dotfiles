@@ -1,10 +1,21 @@
 {
+    //"terminal.integrated.rightClickBehavior": "copyPaste",
+    "editor.lineNumbers": "on",
+    "editor.rulers": [80],
     "files.autoSave": "onFocusChange",
     "files.eol": "\n",
     "editor.renderWhitespace": "all",
     "gitProjectManager.baseProjectsFolders": [
         "~/Code"
     ],
+
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 80,
+    "[markdown]": {
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wordWrapColumn": 80,
+        "editor.quickSuggestions": false
+      },
     // "vim.easymotion": true,
     "vim.foldfix":true,
     "vim.enableNeovim": true,
@@ -41,11 +52,12 @@
 
     "python.linting.pylintPath": "/usr/local/bin/pylint",
 
-    "workbench.statusBar.visible": true,
+    "workbench.statusBar.visible": false,
     "workbench.activityBar.visible": false,
     "editor.minimap.enabled": false,
     "todo-tree.ripgrep": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/vscode-ripgrep/bin/rg",
     "gitlens.keymap": "alternate",
-    "workbench.colorTheme": "Quiet Light",
-    "explorer.confirmDragAndDrop": false
+    "workbench.colorTheme": "Solarized Light",
+    "explorer.confirmDragAndDrop": false,
+    "python.linting.enabled": false
 }

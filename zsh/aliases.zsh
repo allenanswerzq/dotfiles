@@ -203,5 +203,7 @@ alias del="rmtrash"
 alias tp='trash-put'
 alias tl='trash-list'
 alias typora='open -a /Applications/Typora.app/Contents/MacOS/Typora'
+alias mark='open -a /Applications/Mark\ Text.app/Contents/MacOS/Mark\ Text'
+alias pdf='open -a /Applications/PDF\ Expert\ 2.app/Contents/MacOS/PDF\ Expert'
 alias iina='/Applications/IINA.app/Contents/MacOS/IINA'
 alias rm='read "?Are you sure you wanna delete this? Maybe can put this in trash instead: " && /bin/rm -ifdr'

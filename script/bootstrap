@@ -139,6 +139,7 @@ install_dotfiles () {
 
 
 install_dependencies() {
+  sudo apt-get update
   if [ "$(uname -s)" == "Linux" ]; then
     info "installing dependencies"
     sudo apt install -y git
@@ -160,6 +161,12 @@ install_oh_my_zsh() {
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     rm $HOME/.oh-my-zsh/themes/agnoster.zsh-theme
     cp $HOME/.dotfiles/zsh/agnoster.zsh-theme $HOME/.oh-my-zsh/themes/agnoster.zsh-theme
+    if [ "$(uname -s)" == "Linux" ]; then
+      sudo chsh -s /usr/bin/zsh
+    elif
+      sudo chsh -s /bin/zsh
+    fi
+    mv .zshrc.pre-oh-my-zsh .zshrc
   fi
 }
 
@@ -171,19 +178,20 @@ install_tpm() {
   fi
 }
 
-
-# create vim backup and swap files
-if [ ! -d $HOME/.vim ]; then
-  echo 
-  echo "================================="
-  echo 'Creating vim backup directory...'
-  mkdir -p $HOME/.vim/colors
-  cp  $HOME/.dotfiles/vim/molokai.vim $HOME/.vim/colors/molokai.vim
-  mkdir -p $HOME/.vim/backups
-  mkdir -p $HOME/.vim/swaps
-  mkdir -p $HOME/.vim/undo
-  echo "================================="
-fi
+install_vim() {
+  # create vim backup and swap files
+  if [ ! -d $HOME/.vim ]; then
+    echo 
+    echo "================================="
+    echo 'Creating vim backup directory...'
+    mkdir -p $HOME/.vim/colors
+    cp  $HOME/.dotfiles/vim/molokai.vim $HOME/.vim/colors/molokai.vim
+    mkdir -p $HOME/.vim/backups
+    mkdir -p $HOME/.vim/swaps
+    mkdir -p $HOME/.vim/undo
+    echo "================================="
+  fi
+}
 
 # install conda
 install_conda() {
