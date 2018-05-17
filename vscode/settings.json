@@ -4,11 +4,11 @@
     "editor.rulers": [80],
     "files.autoSave": "onFocusChange",
     "files.eol": "\n",
-    "editor.renderWhitespace": "all",
+    // "editor.renderWhitespace": "all",
     "gitProjectManager.baseProjectsFolders": [
         "~/Code"
     ],
-
+    // "terminal.explorerKind": "external",
     "editor.wordWrap": "wordWrapColumn",
     "editor.wordWrapColumn": 80,
     "[markdown]": {
@@ -57,7 +57,9 @@
     "editor.minimap.enabled": false,
     "todo-tree.ripgrep": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/vscode-ripgrep/bin/rg",
     "gitlens.keymap": "alternate",
-    "workbench.colorTheme": "Solarized Light",
+    "workbench.colorTheme": "Monokai",
     "explorer.confirmDragAndDrop": false,
-    "python.linting.enabled": false
+    "python.linting.enabled": false,
+    "extensions.ignoreRecommendations": true,
+    "workbench.startupEditor": "newUntitledFile"
 }
