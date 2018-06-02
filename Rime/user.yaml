@@ -1,6 +1,4 @@
 var:
   previously_selected_schema: luna_pinyin_simp
   schema_access_time:
-    cangjie5: 1526547354
-    luna_pinyin: 1526547642
-    luna_pinyin_simp: 1526547648
+    luna_pinyin_simp: 1526605553

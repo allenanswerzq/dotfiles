@@ -5,7 +5,7 @@ custom_phrase:
   enable_sentence: false
   initial_quality: 1
   user_dict: custom_phrase
-customization: 3249110770
+customization: 1355604124
 engine:
   filters:
     - simplifier
@@ -33,11 +33,15 @@ engine:
 key_binder:
   import_preset: default
 punctuator:
+  full_shape:
+    "/": "、"
+  half_shape:
+    "/": "、"
   import_preset: symbols
 recognizer:
   import_preset: default
   patterns:
-    punct: "^/([0-9]0?|[A-Za-z]+)$"
+    punct: "^/([0-9]+[a-z]*|[a-z]+)$"
     reverse_lookup: "`[a-z]*'?$"
 reverse_lookup:
   comment_format:
@@ -64,7 +68,7 @@ schema:
     
   name: "朙月拼音"
   schema_id: luna_pinyin
-  version: 0.24.custom.3249110770
+  version: 0.22.custom.1355604124
 speller:
   algebra:
     - "erase/^xx$/"

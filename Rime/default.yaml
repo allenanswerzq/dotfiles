@@ -1,13 +1,13 @@
 ascii_composer:
-  good_old_caps_lock: true
+  good_old_caps_lock: noop
   switch_key:
     Caps_Lock: noop
     Control_L: commit_code
-    Control_R: noop
+    Control_R: commit_code
     Shift_L: noop
     Shift_R: noop
-config_version: 0.38.custom.3284592440
-customization: 3284592440
+config_version: 0.36.custom.1957278634
+customization: 1957278634
 key_binder:
   bindings:
     - {accept: "Control+p", send: Up, when: composing}
@@ -23,9 +23,9 @@ key_binder:
     - {accept: "Control+bracketleft", send: Escape, when: composing}
     - {accept: "Alt+v", send: Page_Up, when: composing}
     - {accept: "Control+v", send: Page_Down, when: composing}
-    - {accept: ISO_Left_Tab, send: "Shift+Left", when: composing}
-    - {accept: "Shift+Tab", send: "Shift+Left", when: composing}
-    - {accept: Tab, send: "Shift+Right", when: composing}
+    - {accept: ISO_Left_Tab, send: Page_Up, when: composing}
+    - {accept: "Shift+Tab", send: Page_Up, when: composing}
+    - {accept: Tab, send: Page_Down, when: composing}
     - {accept: minus, send: Page_Up, when: has_menu}
     - {accept: equal, send: Page_Down, when: has_menu}
     - {accept: comma, send: Page_Up, when: paging}
@@ -119,13 +119,10 @@ recognizer:
     url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
 schema_list:
   - schema: luna_pinyin
-  - schema: luna_pinyin_simp
-  - schema: luna_pinyin_fluency
-  - schema: bopomofo
-  - schema: bopomofo_tw
   - schema: cangjie5
-  - schema: stroke
-  - schema: terra_pinyin
+  - schema: luna_pinyin_fluency
+  - schema: luna_pinyin_simp
+  - schema: luna_pinyin_tw
 switcher:
   abbreviate_options: true
   caption: "〔方案選單〕"
@@ -140,6 +137,3 @@ switcher:
     - ascii_punct
     - simplification
     - extended_charset
-    - zh_hant
-    - zh_hans
-    - zh_hant_tw
