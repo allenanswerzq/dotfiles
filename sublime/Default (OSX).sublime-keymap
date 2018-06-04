@@ -12,8 +12,11 @@
     "context": [{"key": "auto_complete_visible"}]
 },
 
-{ "keys": ["alt+["], "command": "fold" },
-{ "keys": ["alt+]"], "command": "unfold" },
+{ "keys": ["super+["], "command": "fold" },
+{ "keys": ["super+]"], "command": "unfold" },
+
+{ "keys": ["alt+]"], "command": "indent" },
+{ "keys": ["alt+["], "command": "unindent" },
 
 { "keys": ["ctrl+1"], "command": "select_by_index", "args": { "index": 0 } },
 { "keys": ["ctrl+1"], "command": "select_by_index", "args": { "index": 0 } },

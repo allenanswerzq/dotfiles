@@ -163,7 +163,7 @@ install_oh_my_zsh() {
     cp $HOME/.dotfiles/zsh/agnoster.zsh-theme $HOME/.oh-my-zsh/themes/agnoster.zsh-theme
     if [ "$(uname -s)" == "Linux" ]; then
       sudo chsh -s /usr/bin/zsh
-    elif
+    else
       sudo chsh -s /bin/zsh
     fi
     mv .zshrc.pre-oh-my-zsh .zshrc

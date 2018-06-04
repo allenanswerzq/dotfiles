@@ -189,7 +189,7 @@ alias awkp6='awk "{print \$6}"'
 alias awkp7='awk "{print \$7}"'
 alias awkp8='awk "{print \$8}"'
 alias awkp9='awk "{print \$9}"'
-alias dots="code ~/.dotfiles"
+alias dots="subl ~/.dotfiles"
 alias new="ls -alt" 
 # Set all_proxy env variable
 alias set_all="export all_proxy=socks5://127.0.0.1:2088"
