@@ -2,6 +2,7 @@
     //"terminal.integrated.rightClickBehavior": "copyPaste",
     "editor.lineNumbers": "on",
     "editor.rulers": [80],
+    "editor.fontFamily": "Inconsolata-g for Powerline",
     "files.autoSave": "onFocusChange",
     "files.eol": "\n",
     // "editor.renderWhitespace": "all",
@@ -44,7 +45,7 @@
     "explorer.confirmDelete": false,
     "workbench.panel.location": "right",
     "workbench.editor.enablePreviewFromQuickOpen": false,
-    "window.zoomLevel": -1,
+    "window.zoomLevel": 0,
 
     "cquery.launch.workingDirectory": "/Users/jche/Code/cquery/build",
     "cquery.launch.command": "release/bin/cquery",
@@ -52,7 +53,7 @@
 
     "python.linting.pylintPath": "/usr/local/bin/pylint",
 
-    "workbench.statusBar.visible": false,
+    "workbench.statusBar.visible": true,
     "workbench.activityBar.visible": false,
     "editor.minimap.enabled": true,
     "todo-tree.ripgrep": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/vscode-ripgrep/bin/rg",

@@ -125,7 +125,7 @@ alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/C
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
 # find . -name .gitattributes | map dirname
-alias map="xargs -n1"
+alias map="xargs -n1 -I {}"
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
@@ -150,26 +150,27 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
-alias path='echo -e ${PATH//:/\\n}'
-alias ppath='echo -e ${PYTHONPATH//:/\\n}'
+alias path="echo -e ${PATH//:/\\n}"
+alias ppath="echo -e ${PYTHONPATH//:/\\n}"
 alias lf="ls -d -1 $PWD/**/*"
-alias workon='source activate'
-alias penvs='conda info --env'
-alias prc4='proxychains4'
-alias prc='proxychains'
-alias py='python'
-alias ifg='ifconfig'
+alias workon="source activate"
+alias workoff="source deactivate"
+alias penvs="conda info --env"
+alias prc4="proxychains4"
+alias prc="proxychains"
+alias py="python"
+alias ifg="ifconfig"
 alias net_all="netstat -tulnpa"
 alias nets="sudo netstat -tulnpa"
-alias gcleann='git clean -n'
-alias pypath='echo -e ${PYTHONPATH//:/\\n}'
+alias gcleann="git clean -n"
+alias pypath="echo -e ${PYTHONPATH//:/\\n}"
 alias cpd="cp -fRv"
 alias start="sudo service sddm start"
 alias psf="ps aux | grep -v grep | grep"
-alias hgnew='hugo new'
+alias hgnew="hugo new"
 alias gmnff="git merge --no-ff"
-alias gadd='git whatchanged --diff-filter=A'
-alias gpullo='git pull origin'
+alias gadd="git whatchanged --diff-filter=A"
+alias gpullo="git pull origin"
 alias lsports="sudo lsof -PiTCP -sTCP:LISTEN"
 alias nets="sudo lsof -PiTCP -sTCP:LISTEN"
 alias dfs="du -h -c -d 1 . | sort -h -r"
@@ -180,32 +181,34 @@ alias tmat="tmux a -t"
 alias ipy="ipython notebook --no-browser"
 alias lookup="grep -rnw . -e"
 alias sshkeys="ssh-keygen -t rsa"
-alias awkp1='awk "{print \$1}"'
-alias awkp2='awk "{print \$2}"'
-alias awkp3='awk "{print \$3}"'
-alias awkp4='awk "{print \$4}"'
-alias awkp5='awk "{print \$5}"'
-alias awkp6='awk "{print \$6}"'
-alias awkp7='awk "{print \$7}"'
-alias awkp8='awk "{print \$8}"'
-alias awkp9='awk "{print \$9}"'
+alias awkp1="awk "{print \$1}""
+alias awkp2="awk "{print \$2}""
+alias awkp3="awk "{print \$3}""
+alias awkp4="awk "{print \$4}""
+alias awkp5="awk "{print \$5}""
+alias awkp6="awk "{print \$6}""
+alias awkp7="awk "{print \$7}""
+alias awkp8="awk "{print \$8}""
+alias awkp9="awk "{print \$9}""
 alias dots="subl ~/.dotfiles"
 alias new="ls -alt" 
 # Set all_proxy env variable
-alias set_all="export all_proxy=socks5://127.0.0.1:2088"
+alias set_all="export all_proxy=socks5://127.0.0.1:1080"
 # Clear all_proxy env variable
 alias clear_all="export all_proxy="
 alias rg="rg -n"
 alias gt=gnome-terminal 
-alias cdt='cd /c/Users/Jche/Downloads/tmp'
+alias cdt="cd /c/Users/Jche/Downloads/tmp"
 alias trash="rmtrash"
 alias del="rmtrash"
-alias tp='trash-put'
-alias tl='trash-list'
-alias typora='open -a /Applications/Typora.app/Contents/MacOS/Typora'
-alias mark='open -a /Applications/Mark\ Text.app/Contents/MacOS/Mark\ Text'
-alias pdf='open -a /Applications/PDF\ Expert.app/Contents/MacOS/PDF\ Expert'
-alias iina='open -a /Applications/IINA.app/Contents/MacOS/IINA'
-alias rm='read "?Are you sure you wanna delete this? Maybe can put this in trash instead: " && /bin/rm -ifdr'
-alias lsf="ls -p | grep -v '/$'"
+alias tp="trash-put"
+alias tl="trash-list"
+alias typora="open -a /Applications/Typora.app/Contents/MacOS/Typora"
+alias mark="open -a /Applications/Mark\ Text.app/Contents/MacOS/Mark\ Text"
+alias pdf="open -a /Applications/PDF\ Expert.app/Contents/MacOS/PDF\ Expert"
+alias iina="open -a /Applications/IINA.app/Contents/MacOS/IINA"
+alias rm='read "?Are you sure you wanna delete this? Maybe can put this in trash instead: "'
+alias rmd='read "?Are you sure you wanna delete this? Maybe can put this in trash instead: "'
+alias lsf="ls -p | grep -v "/$""
 alias xi="open -a ~/Code/xi-mac/build/Release/XiEditor.App"
+

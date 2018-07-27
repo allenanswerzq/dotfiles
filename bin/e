@@ -13,5 +13,5 @@
 #   $ e .
 #   $ e /usr/local
 #   # => opens the specified directory in your editor
-export EDITOR="code"
+export EDITOR="subl"
 exec "$EDITOR" "${1:-.}"

@@ -228,7 +228,7 @@ dot () {
 install_dependencies
 dot
 install_tpm
-install_conda
+# install_conda
 setup_gitconfig
 install_dotfiles
 install_oh_my_zsh
