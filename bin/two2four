@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+sed -i.bak 'h;s/[^ ].*//;s/  /    /g;G;s/\n *//' $1
