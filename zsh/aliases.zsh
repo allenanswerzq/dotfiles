@@ -125,7 +125,7 @@ alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/C
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
 # find . -name .gitattributes | map dirname
-alias map="xargs -n1 -I {}"
+alias map="xargs -t -I {}"
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
@@ -158,7 +158,7 @@ alias workoff="source deactivate"
 alias penvs="conda info --env"
 alias prc4="proxychains4"
 alias prc="proxychains"
-alias py="python"
+alias py="python3"
 alias ifg="ifconfig"
 alias net_all="netstat -tulnpa"
 alias nets="sudo netstat -tulnpa"

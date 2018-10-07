@@ -1,0 +1,12 @@
+#!/bin/sh
+# Ref:https://unix.stackexchange.com/questions/29906/delete-range-of-lines-above-pattern-with-sed-or-awk 
+# Delete multiple line matched with a pattern.
+
+{ "exec" "awk" "-f" "$0" "$@"; }
+# The array h contains the history of lines that are eligible for being "before" lines.
+# The variable skip contains the number of lines to skip.
+skip { --skip }
+match($0, pattern) { skip = before + after }
+{ delete h[NR-before]; h[NR] = $0 }
+NR > before && !skip { print h[NR-before] }
+END { if (!skip) {for (i=NR-before+1; i<=NR; i++) print h[i]} }
