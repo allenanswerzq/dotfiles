@@ -211,4 +211,5 @@ alias rm='read "?Are you sure you wanna delete this? Maybe can put this in trash
 alias rmd='read "?Are you sure you wanna delete this? Maybe can put this in trash instead: "'
 alias lsf="ls -p | grep -v "/$""
 alias p4merge="/Applications/p4merge.app/Contents/MacOS/p4merge"
+alias amk="algo-make"
 
