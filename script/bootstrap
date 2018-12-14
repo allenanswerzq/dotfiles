@@ -2,8 +2,15 @@
 #
 # bootstrap installs things.
 
-cd "$(dirname "$0")/.." # cd to last directory level
+# cd to last directory level
+cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
+
+# Get the OS info
+OS="Darwin"
+if [ "$(uname -s)" == "Darwin" ]; then
+  OS="Linux"
+fi
 
 set -e
 
@@ -28,13 +35,11 @@ fail () {
 }
 
 setup_gitconfig () {
-  if ! [ -f git/gitconfig.local.symlink ]
-  then
+  if ! [ -f git/gitconfig.local.symlink ]; then
     info 'setup gitconfig'
 
     git_credential='cache'
-    if [ "$(uname -s)" == "Darwin" ]
-    then
+    if [ "$(uname -s)" == "Darwin" ]; then
       git_credential='osxkeychain'
     fi
 
@@ -43,7 +48,10 @@ setup_gitconfig () {
     user ' - What is your github author email?'
     read -e git_authoremail
 
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
+    sed -e "s/AUTHORNAME/$git_authorname/g" \
+        -e "s/AUTHOREMAIL/$git_authoremail/g" \
+        -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" \
+        git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
 
     success 'gitconfig'
   fi
@@ -56,77 +64,67 @@ link_file () {
   local overwrite= backup= skip=
   local action=
 
-  if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]
-  then
+  if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]; then
 
-    if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
-    then
+    if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && \
+       [ "$skip_all" == "false" ]; then
 
       local currentSrc="$(readlink $dst)"
 
-      if [ "$currentSrc" == "$src" ]
-      then
+      # if [ "$currentSrc" == "$src" ]; then
+      #   skip=true;
 
-        skip=true;
+      # else
 
-      else
+      user "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
+      [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+      read -n 1 action
 
-        user "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
-        [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
-        read -n 1 action
-
-        case "$action" in
-          o )
-            overwrite=true;;
-          O )
-            overwrite_all=true;;
-          b )
-            backup=true;;
-          B )
-            backup_all=true;;
-          s )
-            skip=true;;
-          S )
-            skip_all=true;;
-          * )
-            ;;
-        esac
-
-      fi
-
+      case "$action" in
+        o )
+          overwrite=true;;
+        O )
+          overwrite_all=true;;
+        b )
+          backup=true;;
+        B )
+          backup_all=true;;
+        s )
+          skip=true;;
+        S )
+          skip_all=true;;
+        * )
+          ;;
+      esac
     fi
 
     overwrite=${overwrite:-$overwrite_all }
     backup=${backup:-$backup_all}
     skip=${skip:-$skip_all}
 
-    if [ "$overwrite" == "true" ]
-    then
+    if [ "$overwrite" == "true" ]; then
       rm -rf "$dst"
       success "removed $dst"
     fi
 
-    if [ "$backup" == "true" ]
-    then
+    if [ "$backup" == "true" ]; then
       mv "$dst" "${dst}.backup"
       success "moved $dst to ${dst}.backup"
     fi
 
-    if [ "$skip" == "true" ]
-    then
+    if [ "$skip" == "true" ]; then
       success "skipped $src"
     fi
   fi
 
-  if [ "$skip" != "true" ]  # "false" or empty
-  then
+  if [ "$skip" != "true" ]; then
     ln -s "$1" "$2"
     success "linked $1 to $2"
   fi
 }
 
-install_dotfiles () {
-  info 'installing dotfiles'
+setup_symlink () {
+  info 'Link all symlink files...'
 
   local overwrite_all=false backup_all=false skip_all=false
 
@@ -139,40 +137,61 @@ install_dotfiles () {
 
 
 install_dependencies() {
-  sudo apt-get update
   if [ "$(uname -s)" == "Linux" ]; then
-    info "installing dependencies"
+    info "installing dependencies for Linux os"
+    sudo apt-get update
     sudo apt install -y git
     sudo apt install -y curl
     sudo apt install -y zsh
+    sudo apt install -y tmux
     sudo apt install -y trash-cli
+  else
+    # (TODO) add dependencies for Mac
+    info "installing dependencies for Mac"
+    if source bin/dot | while read -r data; do info "$data"; done; then
+      success "dependencies installed"
+    else
+      fail "error installing dependencies"
+    fi
   fi
+}
+
+install_fonts() {
+  info "installing fonts.."
   if [ ! -d $HOME/.fonts ]; then
-    # Powerline fonts
     git clone https://github.com/powerline/fonts.git --depth=1 $HOME/.fonts
     sudo $HOME/.fonts/install.sh
   fi
 }
 
-# install oh-my-zsh
+install_prezto() {
+  info "installing prezto..."
+  url="https://github.com/sorin-ionescu/prezto.git"
+  if [ ! -d "$HOME/.zprezto" ]; then
+    git clone --recursive $url "$HOME/.zprezto"
+    sudo chsh -s /bin/zsh
+  fi
+  ln -fs $DOTFILES_ROOT/zprezto/zshrc.zprezto $HOME/.zshrc
+}
+
 install_oh_my_zsh() {
   info "installing oh-my-zsh..."
+  url="https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
   if [ ! -d $HOME/.oh-my-zsh ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    rm $HOME/.oh-my-zsh/themes/agnoster.zsh-theme
-    cp $HOME/.dotfiles/zsh/agnoster.zsh-theme $HOME/.oh-my-zsh/themes/agnoster.zsh-theme
-    if [ "$(uname -s)" == "Linux" ]; then
+    sh -c "$(curl -fsSL $url)"
+    if [ "$OS" == "Linux"]; then
       sudo chsh -s /usr/bin/zsh
     else
       sudo chsh -s /bin/zsh
     fi
-    mv .zshrc.pre-oh-my-zsh .zshrc
+    rm .zshrc.pre-oh-my-zsh
   fi
+  ln -fs $DOTFILES_ROOT/zsh/zshrc.oh-my-zsh $HOME/.zshrc
 }
 
-# install tmux-package-manager
 install_tpm() {
-  info "installing tpm..."
+  # install tmux-package-manager
+  info "installing tmux tpm..."
   if [ ! -d $HOME/.tmux/plugins/tpm ];then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   fi
@@ -181,11 +200,11 @@ install_tpm() {
 install_vim() {
   # create vim backup and swap files
   if [ ! -d $HOME/.vim ]; then
-    echo 
+    echo
     echo "================================="
     echo 'Creating vim backup directory...'
     mkdir -p $HOME/.vim/colors
-    cp  $HOME/.dotfiles/vim/molokai.vim $HOME/.vim/colors/molokai.vim
+    cp $HOME/.dotfiles/vim/molokai.vim $HOME/.vim/colors/molokai.vim
     mkdir -p $HOME/.vim/backups
     mkdir -p $HOME/.vim/swaps
     mkdir -p $HOME/.vim/undo
@@ -196,47 +215,76 @@ install_vim() {
 # install conda
 install_conda() {
   info "installing conda..."
-  if [ "$(uname -s)" == "Linux" ]; then
-    if [ ! -d $HOME/miniconda ]; then
-      curl -fsSL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh > out
-      chmod +x out && bash out -b -p $HOME/miniconda
-      rm out
-    fi
-  elif [ "$(uname -s)" == "Darwin" ]; then
-    if [ ! -d $HOME/miniconda ]; then
-      curl -fsSL https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh > out
-      chmod +x out && bash out -b -p $HOME/miniconda
-      rm out
-    fi
+  if [ "$OS" == "Linux" ]; then
+    url="https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh"
+  elif [ "$OS" == "Darwin" ]; then
+    url="https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh"
+  fi
+
+  if [ ! -d $HOME/miniconda ]; then
+    curl -fsSL $url > out
+    chmod +x out && bash out -b -p $HOME/miniconda
+    rm out
   fi
 }
 
-dot () {
-  # If we're on a Mac, let's install and setup homebrew.
-  if [ "$(uname -s)" == "Darwin" ]
-  then
-    info "installing dependencies"
-    if source bin/dot | while read -r data; do info "$data"; done
-    then
-      success "dependencies installed"
-    else
-      fail "error installing dependencies"
-    fi
-  fi
-}
 
-install_dependencies
-dot
-install_tpm
-# install_conda
-setup_gitconfig
-install_dotfiles
-install_oh_my_zsh
+if [ $# -lt  1 ] ; then
+    cat << EOF >&2
+Usage: $0 -d -o -g -f -p -t
+  -d install dependencies
+  -o install oh-my-zsh
+  -g setup gitconfig
+  -f install powerline font
+  -p install prezto
+  -t install tmux package manager
 
-# 
+Default install all stuff.
+EOF
+  exit 1
+fi
+
+CFG="all"
+while getopts "dogfpt" opt; do
+  case $opt in
+    d ) CFG="dependencies" ;;
+    o ) CFG="oh-my-zsh" ;;
+    g ) CFG="gitconfig" ;;
+    f ) CFG="fonts" ;;
+    p ) CFG="prezto" ;;
+    t ) CFG="tmux-package-manager"
+  esac
+done
+
+
+if [ "$CFG" == "dependencies" ] || [ "$CFG" == "all" ]; then
+  install_dependencies
+fi
+
+if [ "$CFG" == "oh-my-zsh" ] || [ "$CFG" == "all" ]; then
+  install_oh_my_zsh
+fi
+
+if [ "$CFG" == "gitconfig" ] || [ "$CFG" == "all" ]; then
+  setup_gitconfig
+fi
+
+if [ "$CFG" == "fonts" ] || [ "$CFG" == "all" ]; then
+  install_fonts
+fi
+
+if [ "$CFG" == "prezto" ] || [ "$CFG" == "all" ]; then
+  install_prezto
+fi
+
+if [ "$CFG" == "tmxu-package-manager" ] || [ "$CFG" == "all" ]; then
+  install_tpm
+fi
+
+setup_symlink
 chmod +x $HOME/.dotfiles/script/*
 chmod +x $HOME/.dotfiles/bin/*
 chmod +x $HOME/.dotfiles/homebrew/*
 
 echo ''
-echo 'All installed!'
+info 'All installed!'

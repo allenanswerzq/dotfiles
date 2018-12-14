@@ -51,19 +51,4 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-secorrect_lossarch # Down
 
-#auto enter tmux
-#if command -v tmux>/dev/null; then
-#  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
-#fi
-
-#tmux attach > out.txt 2>&1
-#mes=$(cat out.txt)
-
-#if [[ "$mes" == "no sessions" ]]; then
-#  tmux new -s s1 
-#else
-#  tmux attach
-#fi
-#rm out.txt
-
-bindkey -e 
+bindkey -e

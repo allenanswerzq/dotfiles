@@ -191,13 +191,13 @@ alias awkp7='awk "{print \$7}"'
 alias awkp8='awk "{print \$8}"'
 alias awkp9='awk "{print \$9}"'
 alias dots="subl ~/.dotfiles"
-alias new="ls -alt" 
+alias new="ls -alt"
 # Set all_proxy env variable
 alias set_all="export all_proxy=socks5://127.0.0.1:1080"
 # Clear all_proxy env variable
 alias clear_all="export all_proxy="
 alias rg="rg -n"
-alias gt=gnome-terminal 
+alias gt=gnome-terminal
 alias cdt="cd /c/Users/Jche/Downloads/tmp"
 alias trash="rmtrash"
 alias del="rmtrash"
@@ -207,7 +207,6 @@ alias typora="open -a /Applications/Typora.app/Contents/MacOS/Typora"
 alias mark="open -a /Applications/Mark\ Text.app/Contents/MacOS/Mark\ Text"
 alias pdf="open -a /Applications/PDF\ Expert.app/Contents/MacOS/PDF\ Expert"
 alias iina="open -a /Applications/IINA.app/Contents/MacOS/IINA"
-alias rm="echo Use 'del' or 'trash' or the full path i.e. '/bin/rm'"
 alias rm='read "?Are you sure you wanna delete this? Maybe can put this in trash instead: " && /bin/rm'
 alias rmd='read "?Are you sure you wanna delete this? Maybe can put this in trash instead: " && /bin/rm -rfdv'
 alias lsf="ls -p | grep -v "/$""
