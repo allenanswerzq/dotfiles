@@ -1,3 +1,8 @@
+
+#
+# Aliases
+# (sorted alphabetically)
+#
 alias g='git'
 
 alias ga='git add'
@@ -51,14 +56,29 @@ alias gdct='git describe --tags `git rev-list --tags --max-count=1`'
 alias gdt='git diff-tree --no-commit-id --name-only -r'
 alias gdw='git diff --word-diff'
 
+gdv() { git diff -w "$@" | view - }
+
 alias gf='git fetch'
 alias gfa='git fetch --all --prune'
 alias gfo='git fetch origin'
 
+alias ggpur='ggu'
 
-alias gg='git gui citool'
-alias gga='git gui citool --amend'
+alias ggpull='git pull origin $(git_current_branch)'
 
+alias ggpush='git push origin $(git_current_branch)'
+
+alias ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
+alias gpsup='git push --set-upstream origin $(git_current_branch)'
+
+alias ghh='git help'
+
+alias gignore='git update-index --assume-unchanged'
+alias gignored='git ls-files -v | grep "^[[:lower:]]"'
+alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
+
+alias gk='\gitk --all --branches'
+alias gke='\gitk --all $(git log -g --pretty=%h)'
 
 alias gl='git pull'
 alias glg='git log --stat'
@@ -83,6 +103,7 @@ alias gma='git merge --abort'
 alias gp='git push'
 alias gpd='git push --dry-run'
 alias gpoat='git push origin --all && git push origin --tags'
+
 alias gpu='git push upstream'
 alias gpv='git push -v'
 
