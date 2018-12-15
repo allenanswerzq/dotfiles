@@ -186,7 +186,7 @@ install_oh_my_zsh() {
     fi
     rm .zshrc.pre-oh-my-zsh
   fi
-  ln -fs $DOTFILES_ROOT/zsh/zshrc.oh-my-zsh $HOME/.zshrc
+  ln -fs $DOTFILES_ROOT/oh-my-zsh/zshrc.oh-my-zsh $HOME/.zshrc
 }
 
 install_tpm() {

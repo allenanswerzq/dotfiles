@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 export DOT=$HOME/.dotfiles
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
@@ -10,19 +12,26 @@ fi
 
 # all of our zsh files
 typeset -U config_files
-config_files=($DOT/**/*.zsh)
+config_files=("$DOT"/**/*.zsh)
 
-# load the path files
+# Load the path files
 for file in ${(M)config_files:#*/path.zsh}
 do
-  echo loading... $file
+  echo Loading... $file
   source $file
 done
 
-# load everything but the path and completion files
-for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
+# Load aliases files
+for file in ${(M)config_files:#*/aliases.zsh}
 do
-  echo loading... $file
+  echo Loading... $file
+  source $file
+done
+
+# Load everything but the path and completion files
+for file in ${${${config_files:#*/path.zsh}:#*/completion.zsh}:#*oh-my-zsh*.zsh}
+do
+  echo Loading... $file
   source $file
 done
 
