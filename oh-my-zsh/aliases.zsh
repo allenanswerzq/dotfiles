@@ -14,7 +14,8 @@ alias rmd='rm -rfdv'
 alias d="cd ~/Documents"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias p="cd ~/Code"
+alias pj="cd ~/Code"
+alias no="cd ~/Notes"
 alias g="git"
 
 # Detect which `ls` flavor is in use
