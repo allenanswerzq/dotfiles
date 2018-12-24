@@ -281,6 +281,9 @@ if [ "$CFG" == "tmxu-package-manager" ] || [ "$CFG" == "all" ]; then
   install_tpm
 fi
 
+# TODO(landcold7): set local mirrors for tools like `apt brew pip` for high speed
+# alacritty installation commands.
+
 setup_symlink
 chmod +x $HOME/.dotfiles/script/*
 chmod +x $HOME/.dotfiles/bin/*
