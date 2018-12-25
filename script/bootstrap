@@ -277,7 +277,7 @@ if [ "$CFG" == "prezto" ] || [ "$CFG" == "all" ]; then
   install_prezto
 fi
 
-if [ "$CFG" == "tmxu-package-manager" ] || [ "$CFG" == "all" ]; then
+if [ "$CFG" == "tmux-package-manager" ] || [ "$CFG" == "all" ]; then
   install_tpm
 fi
 
