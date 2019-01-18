@@ -238,6 +238,7 @@ Usage: $0 -d -o -g -f -p -t
   -f install powerline font
   -p install prezto
   -t install tmux package manager
+  -i install vim
 
 Default install all stuff.
 EOF
@@ -245,14 +246,15 @@ EOF
 fi
 
 CFG="all"
-while getopts "dogfpt" opt; do
+while getopts "dogfpti" opt; do
   case $opt in
     d ) CFG="dependencies" ;;
     o ) CFG="oh-my-zsh" ;;
     g ) CFG="gitconfig" ;;
     f ) CFG="fonts" ;;
     p ) CFG="prezto" ;;
-    t ) CFG="tmux-package-manager"
+    t ) CFG="tmux-package-manager";;
+    i ) CFG="vim" ;;
   esac
 done
 
@@ -279,6 +281,10 @@ fi
 
 if [ "$CFG" == "tmux-package-manager" ] || [ "$CFG" == "all" ]; then
   install_tpm
+fi
+
+if [ "$CFG" == "vim" ] || [ "$CFG" == "all" ]; then
+  install_vim
 fi
 
 # TODO(landcold7): set local mirrors for tools like `apt brew pip` for high speed

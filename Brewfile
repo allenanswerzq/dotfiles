@@ -65,7 +65,7 @@ cask 'visual-studio-code'
 cask 'xquartz'
 brew 'libcaca', args: ['with-imlib2']
 # cask 'iterm2'
-cask 'graphviz'
+cask 'graphviz', args: [with-gts]
 cask 'macpass'
 cask 'alfred'
 cask 'sepctacle'

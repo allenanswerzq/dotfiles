@@ -10,6 +10,7 @@ alias gaa='git add --all'
 alias gapa='git add --patch'
 alias gau='git add --update'
 alias gap='git apply'
+alias glogan='git --no-pager log --oneline --decorate --graph --all'
 
 alias gb='git branch'
 alias gba='git branch -a'
