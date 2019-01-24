@@ -69,17 +69,7 @@ link_file () {
     if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && \
        [ "$skip_all" == "false" ]; then
 
-      local currentSrc="$(readlink $dst)"
-
-      # if [ "$currentSrc" == "$src" ]; then
-      #   skip=true;
-
-      # else
-
-      user "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
-      [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
-      read -n 1 action
-
+      action="B"
       case "$action" in
         o )
           overwrite=true;;
@@ -228,9 +218,8 @@ install_conda() {
   fi
 }
 
-
-if [ $# -lt  1 ] ; then
-    cat << EOF >&2
+print_usage() {
+  cat << EOF >&2
 Usage: $0 -d -o -g -f -p -t
   -d install dependencies
   -o install oh-my-zsh
@@ -242,11 +231,15 @@ Usage: $0 -d -o -g -f -p -t
 
 Default install all stuff.
 EOF
+}
+
+if [ $# -lt  1 ] ; then
+  print_usage
   exit 1
 fi
 
 CFG="all"
-while getopts "dogfpti" opt; do
+while getopts "dogfptih" opt; do
   case $opt in
     d ) CFG="dependencies" ;;
     o ) CFG="oh-my-zsh" ;;
@@ -255,6 +248,7 @@ while getopts "dogfpti" opt; do
     p ) CFG="prezto" ;;
     t ) CFG="tmux-package-manager";;
     i ) CFG="vim" ;;
+    h ) print_usage; exit 1;;
   esac
 done
 

@@ -211,4 +211,5 @@ alias iina="open -a /Applications/IINA.app/Contents/MacOS/IINA"
 alias lsf="ls -p | grep -v "/$""
 alias p4merge="/Applications/p4merge.app/Contents/MacOS/p4merge"
 alias amk="algo-make"
+alias clstm="clear && tmux clear-history"
 
