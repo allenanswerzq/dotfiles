@@ -397,7 +397,7 @@ if-shell 'test -n "$SSH_CLIENT"' \
     'source-file ~/.dotfiles/tmux-new/tmux.remote.conf'
 
 # Seesion also be considered remote when we are inside a docekr container
-if-shell 'awk -F/ '$2 == "docker"' /proc/self/cgroup | read non_empty_input'
+if-shell 'awk -F/ '$2 == "docker"' /proc/self/cgroup | read non_empty_input' \
     'source-file ~/.dotfiles/tmux-new/tmux.remote.conf'
 
 
