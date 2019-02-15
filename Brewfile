@@ -8,6 +8,7 @@ brew 'ack'
 brew 'coreutils'
 brew 'ripgrep'
 brew 'cmake'
+brew 'llvm', args: ['--with-toolchain']
 brew 'ctags'
 brew 'rg'
 brew 'go'
@@ -66,7 +67,7 @@ cask 'visual-studio-code'
 cask 'xquartz'
 brew 'libcaca', args: ['with-imlib2']
 # cask 'iterm2'
-cask 'graphviz', args: [with-gts]
+cask 'graphviz', args: ['with-gts']
 cask 'macpass'
 cask 'alfred'
 cask 'sepctacle'

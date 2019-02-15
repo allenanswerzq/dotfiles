@@ -400,6 +400,10 @@ if-shell 'test -n "$SSH_CLIENT"' \
 if-shell 'grep -q docker /proc/1/cgroup' \
     'source-file ~/.dotfiles/tmux/tmux.remote.conf'
 
+# Seesion also be considered remote when we are inside a vagrant vm
+if-shell 'test -d /vagrant' \
+    'source-file ~/.dotfiles/tmux/tmux.remote.conf'
+
 
 # We want to have single prefix key "C-a", usable both for local and remote session
 # we don't want to "C-a" + "a" approach either
