@@ -212,4 +212,8 @@ alias lsf="ls -p | grep -v "/$""
 alias p4merge="/Applications/p4merge.app/Contents/MacOS/p4merge"
 alias amk="algo-make"
 alias clstm="clear && tmux clear-history"
-
+# Aliases for z.lua
+alias zc='z -c'
+alias zz='z -i'
+alias zf='z -I'
+alias zb='z -b'
