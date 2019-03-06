@@ -15,4 +15,7 @@
 # Millions of dollars later and `touch` wins.
 
 # Run our new web 2.0 todo list application and raise millions of VC dollars.
-touch ~/Desktop/"$*"
+todo=$(date "+TODO-"$*"-%Y-%m-%d.md")
+touch ~/Desktop/$todo
+echo $(date) >> ~/Desktop/$todo
+subl ~/Desktop/$todo
