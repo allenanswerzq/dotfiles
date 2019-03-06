@@ -217,7 +217,7 @@ alias zz='z -i'
 alias zf='z -I'
 alias zb='z -b'
 # Aliases for make
-alias mk='clstm && make'
+alias mk='clstm && rm -f `basename $(PWD)` && make'
 alias rmk='clstm && rm -f `basename $(PWD)` && make RELEASE=1'
 alias amk="algo-make"
 
