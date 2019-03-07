@@ -216,8 +216,8 @@ alias zc='z -c'
 alias zz='z -i'
 alias zf='z -I'
 alias zb='z -b'
-# Aliases for make
+# Aliases for algorithm make shortcut
 alias mk='cls && rm -f `basename $(PWD)` && make'
-alias rmk='cls && rm -f `basename $(PWD)` && make RELEASE=1'
+alias rmk='algo-make release'
 alias amk="algo-make"
 
