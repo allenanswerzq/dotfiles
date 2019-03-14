@@ -211,6 +211,7 @@ alias iina="open -a /Applications/IINA.app/Contents/MacOS/IINA"
 alias lsf="ls -p | grep -v "/$""
 alias p4merge="/Applications/p4merge.app/Contents/MacOS/p4merge"
 alias cls="clear && tmux clear-history"
+alias mkcd='foo(){ mkdir -p "$1"; cd "$1" }; foo'
 # Aliases for z.lua
 alias zc='z -c'
 alias zz='z -i'
@@ -218,6 +219,8 @@ alias zf='z -I'
 alias zb='z -b'
 # Aliases for algorithm make shortcut
 alias mk='cls && rm -f `basename $(PWD)` && make'
+alias mp='cls && make comp'
+alias mg='cls && make gen'
 alias rmk='algo-make release'
 alias amk="algo-make"
 

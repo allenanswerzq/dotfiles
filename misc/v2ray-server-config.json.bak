@@ -15,8 +15,8 @@
           "alterId": 32
         }
       ],
-      "detour": {        
-      	  "to": "detour"   
+      "detour": {
+      	  "to": "detour"
       }
     },
     "streamSettings": {
@@ -25,18 +25,18 @@
   },
 "inbuoundDetor": {
   "protocol": "vmess",
-  "port": "10000-20000", 
-  "tag": "detour",       
+  "port": "10000-20000",
+  "tag": "detour",
   "settings": {
     "default": {
       "level": 1,
       "alterId": 32
     }
   },
-  "allocate": {           
-    "strategy": "random", 
-    "concurrency": 2,      
-    "refresh": 5           
+  "allocate": {
+    "strategy": "random",
+    "concurrency": 2,
+    "refresh": 5
   }
 },
   "outbound": {
