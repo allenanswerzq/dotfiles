@@ -139,7 +139,7 @@ install_dependencies() {
   else
     # (TODO) add dependencies for Mac
     info "installing dependencies for Mac"
-    if source bin/dot | while read -r data; do info "$data"; done; then
+    if source bin/run-dot | while read -r data; do info "$data"; done; then
       success "dependencies installed"
     else
       fail "error installing dependencies"
@@ -233,11 +233,6 @@ Usage: $0 -d -o -g -f -p -t
 Default install all stuff.
 EOF
 }
-
-if [ $# -lt  1 ] ; then
-  print_usage
-  exit 1
-fi
 
 CFG="all"
 while getopts "dogfptih" opt; do

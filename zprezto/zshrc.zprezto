@@ -41,3 +41,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 eval "$(lua ~/.dotfiles/z.lua/z.lua  --init zsh once enhanced)"
+
+bindkey -e
+
