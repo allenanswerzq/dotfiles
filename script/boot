@@ -135,6 +135,7 @@ install_dependencies() {
           zsh \
           tmux \
           trash-cli \
+          vim \
           lua5.3
   else
     # (TODO) add dependencies for Mac
@@ -163,6 +164,8 @@ install_prezto() {
     sudo chsh -s /bin/zsh
   fi
   ln -fs $DOTFILES_ROOT/zprezto/zshrc.zprezto $HOME/.zshrc
+  sed -i.bak 's/local show_return="✘ "/local show_return="x "/g' \
+      ~/.zprezto/modules/prompt/functions/prompt_sorin_setup
 }
 
 install_tpm() {
@@ -177,14 +180,12 @@ install_vim() {
   # create vim backup and swap files
   if [ ! -d $HOME/.vim ]; then
     echo
-    echo "================================="
-    echo 'Creating vim backup directory...'
+    info 'Creating vim backup directory...'
     mkdir -p $HOME/.vim/colors
     cp $HOME/.dotfiles/vim/molokai.vim $HOME/.vim/colors/molokai.vim
     mkdir -p $HOME/.vim/backups
     mkdir -p $HOME/.vim/swaps
     mkdir -p $HOME/.vim/undo
-    echo "================================="
   fi
 }
 
