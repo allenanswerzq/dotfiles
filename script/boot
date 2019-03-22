@@ -130,12 +130,12 @@ install_dependencies() {
   if [ "$(uname -s)" == "Linux" ]; then
     info "installing dependencies for Linux os"
     sudo apt-get update
-    sudo apt install -y git
-    sudo apt install -y curl
-    sudo apt install -y zsh
-    sudo apt install -y tmux
-    sudo apt install -y trash-cli
-    sudo apt install -y lua5.3
+    sudo apt-get install -y git \
+          curl \
+          zsh \
+          tmux \
+          trash-cli \
+          lua5.3
   else
     # (TODO) add dependencies for Mac
     info "installing dependencies for Mac"
@@ -165,25 +165,10 @@ install_prezto() {
   ln -fs $DOTFILES_ROOT/zprezto/zshrc.zprezto $HOME/.zshrc
 }
 
-install_oh_my_zsh() {
-  info "installing oh-my-zsh..."
-  url="https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
-  if [ ! -d $HOME/.oh-my-zsh ]; then
-    sh -c "$(curl -fsSL $url)"
-    if [ "$OS" == "Linux"]; then
-      sudo chsh -s /usr/bin/zsh
-    else
-      sudo chsh -s /bin/zsh
-    fi
-    rm .zshrc.pre-oh-my-zsh
-  fi
-  ln -fs $DOTFILES_ROOT/oh-my-zsh/zshrc.oh-my-zsh $HOME/.zshrc
-}
-
 install_tpm() {
   # install tmux-package-manager
   info "installing tmux tpm..."
-  if [ ! -d $HOME/.tmux/plugins/tpm ];then
+  if [ ! -d $HOME/.tmux/plugins/tpm ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   fi
 }
@@ -230,52 +215,44 @@ Usage: $0 -d -o -g -f -p -t
   -t install tmux package manager
   -i install vim
 
+  -b basic configuration
+    install_dependencies
+    install_vim
+    install_tpm
+    install_prezto
 Default install all stuff.
 EOF
 }
 
-CFG="all"
-while getopts "dogfptih" opt; do
+install_all() {
+  install_dependencies
+  setup_gitconfig
+  install_fonts
+  install_tpm
+  install_vim
+  install_prezto
+}
+
+install_basic() {
+  install_dependencies
+  install_vim
+  install_tpm
+  install_prezto
+}
+
+while getopts "dogfptihb" opt; do
   case $opt in
-    d ) CFG="dependencies" ;;
-    o ) CFG="oh-my-zsh" ;;
-    g ) CFG="gitconfig" ;;
-    f ) CFG="fonts" ;;
-    p ) CFG="prezto" ;;
-    t ) CFG="tmux-package-manager";;
-    i ) CFG="vim" ;;
-    h ) print_usage; exit 1;;
+    d ) install_dependencies ;;
+    g ) setup_gitconfig ;;
+    f ) install_fonts ;;
+    p ) install_prezto ;;
+    t ) install_tpm ;;
+    i ) install_vim ;;
+    b ) install_basic ;;
+    h ) print_usage; exit 1 ;;
+    * ) install_all ;;
   esac
 done
-
-
-if [ "$CFG" == "dependencies" ] || [ "$CFG" == "all" ]; then
-  install_dependencies
-fi
-
-if [ "$CFG" == "oh-my-zsh" ] || [ "$CFG" == "all" ]; then
-  install_oh_my_zsh
-fi
-
-if [ "$CFG" == "gitconfig" ] || [ "$CFG" == "all" ]; then
-  setup_gitconfig
-fi
-
-if [ "$CFG" == "fonts" ] || [ "$CFG" == "all" ]; then
-  install_fonts
-fi
-
-if [ "$CFG" == "prezto" ] || [ "$CFG" == "all" ]; then
-  install_prezto
-fi
-
-if [ "$CFG" == "tmux-package-manager" ] || [ "$CFG" == "all" ]; then
-  install_tpm
-fi
-
-if [ "$CFG" == "vim" ] || [ "$CFG" == "all" ]; then
-  install_vim
-fi
 
 # TODO(landcold7): set local mirrors for tools like `apt brew pip` for high speed
 # alacritty installation commands.
