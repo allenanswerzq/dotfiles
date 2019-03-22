@@ -235,6 +235,7 @@ install_all() {
 
 install_basic() {
   install_dependencies
+  install_fonts
   install_vim
   install_tpm
   install_prezto
